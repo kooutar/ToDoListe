@@ -1,0 +1,14 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+.contentToDo{
+    margin-top: 20px;
+    width: 350px;
+    height: 200px;
+    background-color: white;
+}
+
+

@@ -1,14 +1,48 @@
+.fenetre-medial{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba( 0, 0, 0, .25 )
+}
+form{
+position: fixed;
+top: 50%;
+left: 50%;
+padding: 25px;
+background: white;
+transform: translate(-50%, -50%);
+    width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  padding: 10px;
+}
 .content{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    background-color: white;
+    width: 350px;
+    height: 500px;
+    overflow-y: scroll;
+    border: 2px solid black; 
     
 }
 .contentToDo{
     margin-top: 20px;
-    width: 350px;
+    width: 300px;
     height: 200px;
-    background-color: white;
+    background-color: rgb(209, 193, 193);
+   
+}
+input{
+    width: 300px;
+    height: 20px;
+    background-color: whitesmoke;
+    border: 1px solid black;
 }
 
 

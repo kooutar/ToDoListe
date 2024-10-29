@@ -8,6 +8,33 @@
     <title>To Do Liste</title>
 </head>
 <body class="bg-[url('imageBckground.png')] bg-center bg-no-repeat bg-cover h-[40rem]">
+
+ <!-- fenetre modial -->
+
+ <div id="fenetre-medial" class="fenetre-medial">
+   
+    <form action="" method="get">
+        <button class="close">&times;</button>
+        <h3>Ajouter un tache</h3>
+     <label for="">Titre</label>
+     <input type="text" id="titre">
+     <label for="">Description</label>
+     <textarea name="" id="description"></textarea>
+     <div class="date">
+        <input type="date">
+        <input type="time">
+     </div>
+     <input type="text" list="options" name="choix">
+     <datalist id="options">
+     <option value="p1">
+     <option value="p2">
+     <option value="p3">
+     </datalist>
+     <button id="ajouterTache"> Ajouter Tache</button>
+
+    </form>
+</div>
+
      <section class="flex justify-center mt-[20vh]">
         <div class="flex gap-10 ">
             <!-- zone To do -->
@@ -15,15 +42,12 @@
                 <div class="bg-red-600 h-2">
                 </div>
                 <div class="flex gap-[15rem]">
-                <h3>To Do</h3>
+                <div class="flex gap-2 w-[50px]"><h3>To Do </h3> <p id="cont">0</p></div>
                 <div class="flex gap-10  ">
-                <button  onclick="ajouter()">+</button>
-                <button  onclick="remove()">-</button>
+                <button id="ajouter" onclick="ajouter2()">+</button>
             </div>
                </div>
-               <div class="content">
-                  
-               </div>
+               <div class="content"></div>
             </div>
             <!-- zone doing -->
             <div class="w-[350px] h-[50px] bg-white border-solid border-2 border-black">

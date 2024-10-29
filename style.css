@@ -21,6 +21,10 @@ transform: translate(-50%, -50%);
   padding: 10px;
 }
 .content{
+    background-image: url('todo.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -29,6 +33,7 @@ transform: translate(-50%, -50%);
     height: 500px;
     overflow-y: scroll;
     border: 2px solid black; 
+    padding: 10px;
     
 }
 .contentToDo{
@@ -43,6 +48,12 @@ input{
     height: 20px;
     background-color: whitesmoke;
     border: 1px solid black;
+}
+.titre{
+    width: 300px;
+    height: 50px;
+    background-color: aliceblue;
+    padding: 10px;
 }
 
 

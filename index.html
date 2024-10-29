@@ -13,7 +13,7 @@
 
  <div id="fenetre-medial" class="fenetre-medial">
    
-    <form action="" method="get">
+    <form>
         <button class="close">&times;</button>
         <h3>Ajouter un tache</h3>
      <label for="">Titre</label>
@@ -30,13 +30,15 @@
      <option value="p2">
      <option value="p3">
      </datalist>
-     <button id="ajouterTache"> Ajouter Tache</button>
+     <button type="button" id="ajouterTache" onclick="ajouterTache()">Ajouter Tache</button>
 
     </form>
 </div>
+        
 
      <section class="flex justify-center mt-[20vh]">
         <div class="flex gap-10 ">
+
             <!-- zone To do -->
             <div class="w-[350px] h-[50px] bg-white border-solid border-2 border-black">
                 <div class="bg-red-600 h-2">
@@ -54,12 +56,14 @@
                 <div class="bg-yellow-600 h-2">
                 </div>
                 <div >In Progress</div>
+                <!-- <div class="content"></div> -->
             </div>
             <!-- zone Done -->
             <div class="w-[350px] h-[50px] bg-white border-solid border-2 border-black">
                 <div class="bg-green-600 h-2">
                 </div>
                 <div>Done</div>
+                <!-- <div class="content"></div> -->
             </div>
         </div>
      </section>

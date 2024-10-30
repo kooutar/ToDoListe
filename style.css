@@ -8,14 +8,13 @@
     background: rgba( 0, 0, 0, .25 )
 }
 .form{
-position: fixed;
-top: 50%;
-left: 50%;
-padding: 25px;
-background: white;
-transform: translate(-50%, -50%);
-width: 500px;
-
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 25px;
+    background: white;
+    transform: translate(-50%, -50%);
+    width: 500px;
 }
 .headerForm{
     display: flex;
@@ -39,10 +38,8 @@ width: 500px;
     padding: 5px;
 }
 .content{
-    /* background-image: url('todo.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; */
+
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -68,10 +65,23 @@ input{
     border: 1px solid black;
 }
 .containerTache {
+    display: flex;
+    /* justify-content: space-around; */
     width: 300px;
     height: 50px;
-    background-color: aliceblue;
+    background-color: rgba(255, 0, 0, 0.349);
     padding: 10px;
 }
-
+.divButton{
+    display: flex;
+    justify-content: end;
+    width: 230px;
+    padding-left: 10px;
+}
+/* img{
+    width: 33%;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+} */
 

@@ -27,12 +27,11 @@
         <input type="date">
         <input type="time">
      </div>
-     <input type="text" list="options" name="choix">
-     <datalist id="options">
-     <option value="p1">
-     <option value="p2">
-     <option value="p3">
-     </datalist>
+     <select>
+        <option value="p1">p1</option>
+        <option value="p2">p2</option>
+        <option value="p3">p3</option>
+    </select>
      <button type="button" id="ajouterTache" onclick="ajouterTache()">Ajouter Tache</button>
     </div>
     </div>
@@ -47,7 +46,7 @@
                 <div class="bg-red-600 h-2">
                 </div>
                 <div class="flex gap-[15rem]">
-                <div class="flex gap-2 w-[50px]"><h3>To Do </h3> <p id="cont">0</p></div>
+                <div class="flex gap-2 w-[70px] "><h3>To Do</h3> <p id="cont">0</p></div>
                 <div class="flex gap-10  ">
                 <button id="ajouter" onclick="ajouter2()">+</button>
             </div>
@@ -59,14 +58,14 @@
                 <div class="bg-yellow-600 h-2">
                 </div>
                 <div >In Progress</div>
-                <!-- <div class="content"></div> -->
+                <div class="content"></div>
             </div>
             <!-- zone Done -->
             <div class="w-[350px] h-[50px] bg-white border-solid border-2 border-black">
                 <div class="bg-green-600 h-2">
                 </div>
                 <div>Done</div>
-                <!-- <div class="content"></div> -->
+                <div class="content"></div>
             </div>
         </div>
      </section>

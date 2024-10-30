@@ -7,24 +7,42 @@
     bottom: 0;
     background: rgba( 0, 0, 0, .25 )
 }
-form{
+.form{
 position: fixed;
 top: 50%;
 left: 50%;
 padding: 25px;
 background: white;
 transform: translate(-50%, -50%);
-    width: 500px;
-  display: flex;
-  flex-direction: column;
-  gap:10px;
-  padding: 10px;
+width: 500px;
+
+}
+.headerForm{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.contentForm{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    padding: 10px;
+}
+.contentForm textarea{
+    border: 2px solid black;
+    width: 300px
+    
+} 
+.contentForm button{
+    background-color: rgba(137, 43, 226, 0.251);
+    height: 50px;
+    padding: 5px;
 }
 .content{
-    background-image: url('todo.jpg');
+    /* background-image: url('todo.jpg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -49,7 +67,7 @@ input{
     background-color: whitesmoke;
     border: 1px solid black;
 }
-.titre{
+.containerTache {
     width: 300px;
     height: 50px;
     background-color: aliceblue;

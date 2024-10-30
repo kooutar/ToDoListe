@@ -13,11 +13,14 @@
 
  <div id="fenetre-medial" class="fenetre-medial">
    
-    <form>
-        <button class="close">&times;</button>
+    <div class="form">
+    <div class="headerForm">
         <h3>Ajouter un tache</h3>
+        <button  id="close" class="close" >&times;</button>
+    </div>
+    <div class="contentForm">
      <label for="">Titre</label>
-     <input type="text" id="titre">
+     <input type="text" id="titre" value="titre">
      <label for="">Description</label>
      <textarea name="" id="description"></textarea>
      <div class="date">
@@ -31,8 +34,8 @@
      <option value="p3">
      </datalist>
      <button type="button" id="ajouterTache" onclick="ajouterTache()">Ajouter Tache</button>
-
-    </form>
+    </div>
+    </div>
 </div>
         
 

@@ -1,4 +1,11 @@
-var contToDo=0
+var contToDo=0;
+const modal=document.getElementById("fenetre-medial");
+const label =document.createElement("label");
+const titre=document.getElementById("titre").value;
+const description=document.getElementById("description").value;
+const date=document.getElementById("dateTache").value;
+const time=document.getElementById("timeTache").value;
+const priorite=document.getElementById("options").value;
 
 // fct pour afficher modale
 function ajouter2()
@@ -6,41 +13,20 @@ function ajouter2()
   document.getElementById('fenetre-medial').style.display="block"
 }
  
-
 // lisnter pour fermer modale
-
 document.addEventListener("DOMContentLoaded", ()=> {
   var ajouterTacheButton = document.getElementById("close");
   ajouterTacheButton.addEventListener("click", ()=>{
-   let modal=document.getElementById("fenetre-medial");
     modal.style.display="none";
   });
 });
-// fct de priorité
-// function priorite()
-// {
-//   let priorite="p1"
-//   // let elt = document.querySelector('select');
-//   // priorite=elt.options[this.selectedIndex].value;
-//   return priorite;
-// }
 
 // fct pour ajouter une tache 
  function ajouterTache()
   {
     var div=document.createElement("div");
     // pour le style 
-    div.classList.add("containerTache");
-    var label =document.createElement("label");
-    var titre=document.getElementById("titre").value;
-    var description=document.getElementById("description").value;
-    var date=document.getElementById("dateTache").value;
-    var time=document.getElementById("timeTache").value;
-    var priorite=document.getElementById("options").value;
- 
-  if(titre==="titre"){
-   alert("vide")
-  }else{
+    div.classList.add("containerTache"); 
     
     //  aselectionner element parent de div
     var parent=document.getElementsByClassName("content")[0];
@@ -72,25 +58,22 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
 let btnModifier = document.createElement("button");
 let btnSupprimmer = document.createElement("button");
-
-// Add Tailwind CSS classes for styling
+// appeler la fct remove
+btnSupprimmer.onclick= remove;
+btnModifier.onclick=modifier;
+// ajouter css 
 btnModifier.className = "bteModifier bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 flex items-center";
 btnSupprimmer.className = " bteSupprimer bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 flex items-center";
 
-// Set innerHTML with image icons
+// ajouter des img 
 btnModifier.innerHTML = '<img src="modifierIcon.png" class="w-5 h-5 mr-2"> ';
 btnSupprimmer.innerHTML = '<img src="supprimmericon.png" class="w-5 h-5 mr-2"> ';
 
-// Append buttons to divButton
+// affcetter e le parent 
     divButton.appendChild(btnModifier);
     divButton.appendChild(btnSupprimmer);
 
-
-
-}
-}
-    
-  
+} 
 // pour la suppression (ne fonctionne pas )
 document.addEventListener("DOMContentLoaded", () => {
   let containerTache = document.getElementsByClassName("containerTache")[0];
@@ -99,33 +82,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-
-//priorite
-
-function priorite()
+// supprimmer
+function remove()
 {
+  let containerTache = document.getElementsByClassName("containerTache")[0];
  
-    let containerTache=document.getElementsByClassName("containerTache")[0];
-    let selectElement = document.getElementById("options");
-    let selectedValue = selectElement.value;
-    alert(selectedValue);
-    if(selectedValue==="p1")
-    {
-      alert("You selected: " + selectedValue);
-      containerTache.style.backgroundColor="red";
-    }
-    if(selectedValue=="p2")
-    {
-      alert("You selected: " + selectedValue);
-      containerTache.style.backgroundColor="yello";
-    }
-    if(selectedValue=="p3")
-      {
-        alert("You selected: " + selectedValue);
-        containerTache.style.backgroundColor="green";
-      }
-
-    
+  containerTache.remove();
+  contToDo--;
+  document.getElementById("cont").textContent=contToDo;
 }
-
+// modifier
+function modifier()
+{
+  
+}

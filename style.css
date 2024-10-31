@@ -1,57 +1,5 @@
-.fenetre-medial{
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba( 0, 0, 0, .25 )
-}
-.form{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    padding: 25px;
-    background: white;
-    transform: translate(-50%, -50%);
-    width: 500px;
-}
-.headerForm{
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-}
-.contentForm{
-    display: flex;
-    flex-direction: column;
-    gap:10px;
-    padding: 10px;
-}
-.contentForm textarea{
-    border: 2px solid black;
-    width: 300px
-    
-} 
-.contentForm button{
-    background-color: rgba(137, 43, 226, 0.251);
-    height: 50px;
-    padding: 5px;
-}
-.content{
 
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: white;
-    width: 350px;
-    height: 500px;
-    overflow-y: scroll;
-    border: 2px solid black; 
-    padding: 10px;
-    
-}
-.contentToDo{
+/* .contentToDo{
     margin-top: 20px;
     width: 300px;
     height: 200px;
@@ -66,10 +14,10 @@ input{
 }
 .containerTache {
     display: flex;
-    /* justify-content: space-around; */
+
     width: 300px;
     height: 50px;
-    background-color: rgba(255, 0, 0, 0.349);
+
     padding: 10px;
 }
 .divButton{
@@ -77,11 +25,6 @@ input{
     justify-content: end;
     width: 230px;
     padding-left: 10px;
-}
-/* img{
-    width: 33%;
-    background-color: aquamarine;
-    display: flex;
-    justify-content: center;
 } */
+
 

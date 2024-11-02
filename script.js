@@ -25,7 +25,14 @@ let editDateTache =document.getElementById("editDateTache");
 let editTimeTache = document.getElementById("editTimeTache");
 let editOptions = document.getElementById("editOptions");
 let editStatus = document.querySelector('input[name="EdittaskStatus"]:checked');
-
+// variableTemperaire
+ 
+let TitreTemporaire;
+let DescrptionTemporaire;
+let DateTemporaire;
+let TimeTemporaire;
+let statusTemporaire;
+let prioriteTemporaire;
 
 function ajouter2()
 {  
@@ -100,7 +107,7 @@ btnSupprimmer.innerHTML = '<img src="supprimmericon.png" class="w-5 h-5 mr-2"> '
       divButton.appendChild(btnModifier);
       divButton.appendChild(btnSupprimmer);
 
-      if (status === "To-Do") {
+    if (status === "To-Do") {
         containerDesTaches[0].appendChild(div);
         tablToDo.push(div);
         contToDo++;
@@ -115,10 +122,21 @@ btnSupprimmer.innerHTML = '<img src="supprimmericon.png" class="w-5 h-5 mr-2"> '
       tabDone.push(div);
       contDone++;
       document.getElementById("contDone").textContent=contDone;
-    }
+    } 
+    
+    TitreTemporaire=titre.value;
+    DescrptionTemporaire=description.value;
+    DateTemporaire=date.value;
+    TimeTemporaire=time.value;
+    prioriteTemporaire=priorite.value;
 
- 
-  
+    titre.value='';
+    description.value='';
+    date.value='';
+    time.value='';
+    priorite.value='p1';
+
+
 }
 
 
@@ -144,22 +162,18 @@ function supprimer(button, status)
   }
 
 }
-// supprimmer
-
 // modifier
 function modifier()
 {
   
   editModal.classList.remove("hidden"); 
-  alert("hiii")
-  editTitre.value=titre.value;
- editDescription.value=description.value;
- editDateTache.value=date.value;
- editTimeTache.value=time.value;
-editOptions.value=priorite.value;
-alert(editTitre.value);
-alert(editDescription);
-alert(editDateTache.value);
+ 
+  editTitre.value=TitreTemporaire;
+ editDescription.value=DescrptionTemporaire;
+ editDateTache.value=DateTemporaire;
+ editTimeTache.value= TimeTemporaire;
+ editOptions.value=priorite.value;
+
 // editStatus.value=Tachestatus.value;
 
 }

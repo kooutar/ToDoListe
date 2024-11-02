@@ -19,8 +19,9 @@
                 <button type="button" id="close" class="close text-gray-500 hover:text-gray-700">&times;</button>
             </div>
             <div class="contentForm">
+          
                 <label for="titre" class="block text-sm font-medium text-gray-700">Titre</label>
-                <input type="text" id="titre" value="titre" class="mt-1 h-8 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="Entrez le titre" required>
+                <input type="text" id="titre"  class="mt-1 h-8 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="Entrez le titre" required>
 
                 <label for="description" class="block mt-4 text-sm font-medium text-gray-700">Description</label>
                 <textarea id="description" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="Entrez la description" required></textarea>
@@ -57,6 +58,7 @@
                 <button type="button" id="ajouterTache" onclick="ajouterTache()" class="mt-6 w-full bg-yellow-600 text-white font-semibold py-2 rounded-md hover:bg-yellow-900 focus:outline-none focus:ring focus:ring-blue-300">
                     Ajouter Tâche
                 </button>
+          
             </div>
         </div>
         
@@ -71,9 +73,10 @@
                 <h3 class="text-lg font-semibold">Modifier une tâche</h3>
                 <button type="button" id="close" class="close text-gray-500 hover:text-gray-700" onclick="closeEditModal();">&times;</button>
             </div>
+           
             <div class="contentForm">
                 <label for="editTitre" class="block text-sm font-medium text-gray-700">Titre</label>
-                <input type="text" id="editTitre" value="titre" class="mt-1 h-8 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="Entrez le titre" required>
+                <input type="text" id="editTitre"  class="mt-1 h-8 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="Entrez le titre" required>
 
                 <label for="editDescription" class="block mt-4 text-sm font-medium text-gray-700">Description</label>
                 <textarea id="editDescription" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="Entrez la description" required></textarea>
@@ -89,10 +92,30 @@
                     <option value="p2">p2</option>
                     <option value="p3">p3</option>
                 </select>
+
+                <div class="mb-4">
+                    <label class="block mt-4  text-sm font-medium text-gray-700">Statut</label>
+                    <div class="flex space-x-4">
+                        <label class="flex items-center">
+                            <input id="EditstatutToDo" type="radio" name="EdittaskStatus" value="To-Do" class="mr-2" checked>
+                            To-Do
+                        </label>
+                        <label class="flex items-center">
+                            <input  id="EditstatutDoing" type="radio" name="EdittaskStatus" value="Doing" class="mr-2">
+                            Doing
+                        </label>
+                        <label class="flex items-center">
+                            <input id="EditstatutDone" type="radio" name="EdittaskStatus" value="Done" class="mr-2">
+                            Done
+                        </label>
+                    </div>
+                </div>
+
                 <button type="button" id="modifierTache" onclick="modifierTache()" class="mt-6 w-full bg-yellow-600 text-white font-semibold py-2 rounded-md hover:bg-yellow-900 focus:outline-none focus:ring focus:ring-blue-300">
                     Modifier Tâche
                 </button>
             </div>
+        
         </div>
         
     </div>

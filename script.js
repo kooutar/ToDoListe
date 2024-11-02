@@ -6,6 +6,15 @@ var tablToDo=[];
 var tabDoing=[];
 var tabDone=[];
 
+ 
+  let titre=document.getElementById("titre");
+  let description=document.getElementById("description");
+  let date=document.getElementById("dateTache");
+  let time=document.getElementById("timeTache");
+  let priorite=document.getElementById("options");
+  let containerDesTaches=document.getElementsByClassName("content");
+  // let Tachestatus = document.querySelector('input[name="taskStatus"]:checked');
+
 
 // fct pour afficher modale
 
@@ -15,19 +24,18 @@ let editDescription = document.getElementById("editDescription");
 let editDateTache =document.getElementById("editDateTache");
 let editTimeTache = document.getElementById("editTimeTache");
 let editOptions = document.getElementById("editOptions");
+let editStatus = document.querySelector('input[name="EdittaskStatus"]:checked');
+
 
 function ajouter2()
 {  
   document.getElementById('fenetre-medial').style.display="block"
 }
- 
-
 // lisnter pour fermer modale
-
 document.addEventListener("DOMContentLoaded", ()=> {
   var ajouterTacheButton = document.getElementById("close");
   ajouterTacheButton.addEventListener("click", ()=>{
-  //  let modal=document.getElementById("fenetre-medial");
+
     modal.style.display="none";
   });
 });
@@ -41,34 +49,23 @@ function closeEditModal(){
   {
     var div=document.createElement("div");
     let label =document.createElement("label");
-    let titre=document.getElementById("titre").value;
-    let description=document.getElementById("description").value;
-    let date=document.getElementById("dateTache").value;
-    let time=document.getElementById("timeTache").value;
-    let priorite=document.getElementById("options").value;
-    let status = document.querySelector('input[name="taskStatus"]:checked').value;
+    var status = document.querySelector('input[name="taskStatus"]:checked').value;
+    console.log(status);
     let containerDesTaches=document.getElementsByClassName("content")
     // pour le style 
     div.classList.add("containerTache","p-4");
-
-
-    //  aselectionner element parent de div
-    // var parent=document.getElementsByClassName("content")[0];
-
     
-    //afectter enfent a son parent
-    // parent.appendChild(div);
-    label.innerHTML= `<h1>${titre}</h1>
-                       <p >${description}<p><br>
-                       <p>${date}/${time}</p>
+    label.innerHTML= `<h1>${titre.value}</h1>
+                       <p >${description.value}<p><br>
+                       <p>${date.value}/${time.value}</p>
                        `;
-    if(priorite==="p1")
+    if(priorite.value==="p1")
     {
       div.classList.add("bg-red-300", "border-l-4", "border-red-500");
-    }else if(priorite==="p2")
+    }else if(priorite.value==="p2")
     {
       div.classList.add("bg-yellow-300", "border-l-4", "border-yellow-300");
-    }else if(priorite==="p3")
+    }else if(priorite.value==="p3")
     {
       div.classList.add("bg-green-100", "border-l-4", "border-green-500");
     }
@@ -86,7 +83,10 @@ function closeEditModal(){
 let btnModifier = document.createElement("button");
 let btnSupprimmer = document.createElement("button");
 // appeler la fct remove
-btnSupprimmer.onclick= remove;
+btnSupprimmer.onclick= function() {
+  alert(status)
+  supprimer(divButton, status);
+};
 btnModifier.onclick= modifier;
 // ajouter css 
 btnModifier.className = "bteModifier bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 flex items-center";
@@ -97,56 +97,81 @@ btnModifier.innerHTML = '<img src="modifierIcon.png" class="w-5 h-5 mr-2"> ';
 btnSupprimmer.innerHTML = '<img src="supprimmericon.png" class="w-5 h-5 mr-2"> ';
 
 // affcetter e le parent 
-    divButton.appendChild(btnModifier);
-    divButton.appendChild(btnSupprimmer);
+      divButton.appendChild(btnModifier);
+      divButton.appendChild(btnSupprimmer);
 
-    if (status === "To-Do") {
-      // document.getElementById("todoList").appendChild(containerDesTaches[0]);
-      containerDesTaches[0].appendChild(div);
-      tablToDo.push(div);
-      contToDo++;
+      if (status === "To-Do") {
+        containerDesTaches[0].appendChild(div);
+        tablToDo.push(div);
+        contToDo++;
+        document.getElementById("contToDo").textContent=contToDo;
+    } else if (status === "Doing") {
+      containerDesTaches[1].appendChild(div);
+      tabDoing.push(div);
+      contDoing++;
+        document.getElementById("contDoing").textContent=contDoing;
+    } else if (status === "Done") {
+      containerDesTaches[2].appendChild(div);
+      tabDone.push(div);
+      contDone++;
+      document.getElementById("contDone").textContent=contDone;
+    }
+
+ 
+  
+}
+
+
+function supprimer(button, status)
+{
+  
+  if (status === "To-Do") 
+    {
+      button.parentElement.remove();
+      contToDo--;
       document.getElementById("contToDo").textContent=contToDo;
-  } else if (status === "Doing") {
-    containerDesTaches[1].appendChild(div);
-    tabDoing.push(div);
-    contDoing++;
+    }
+  else if (status === "Doing")
+    { 
+      button.parentElement.remove();
+      contDoing--;
       document.getElementById("contDoing").textContent=contDoing;
-  } else if (status === "Done") {
-    containerDesTaches[2].appendChild(div);
-    tabDone.push(div);
-    contDone++;
+    }
+  else if (status === "Done") {
+    button.parentElement.remove();
+    contDone--;
     document.getElementById("contDone").textContent=contDone;
   }
+
 }
 // supprimmer
-function remove()
-{
-  let containerTache = document.getElementsByClassName("containerTache")[0];
-  containerTache.remove();
-  contToDo--;
 
-  document.getElementById("contToDo").textContent=contToDo;
-}
 // modifier
 function modifier()
 {
-  editModal.classList.remove("hidden");
-  // let titre=document.getElementById("titre").value;
-    // let description=document.getElementById("description").value;
-    let date=document.getElementById("dateTache").value;
-    let time=document.getElementById("timeTache").value;
-    let priorite=document.getElementById("options").value;
-  let containerTache = document.getElementsByClassName("containerTache")[0];
-//   const tabenfant=containerTache.children;//recuperé les enfants de containerTache
-//   for (let enfant of tabenfant) {
-//    console.log(enfant)
-// }
-   let titre=containerTache.getElementsByTagName("h1")[0];
-   let description=containerTache.getElementsByTagName("p")[0]
+  
+  editModal.classList.remove("hidden"); 
+  alert("hiii")
+  editTitre.value=titre.value;
+ editDescription.value=description.value;
+ editDateTache.value=date.value;
+ editTimeTache.value=time.value;
+editOptions.value=priorite.value;
+alert(editTitre.value);
+alert(editDescription);
+alert(editDateTache.value);
+// editStatus.value=Tachestatus.value;
+
 }
 
 // pour modifier Tache
 function modifierTache()
 {
+  //  let newTitre=editTitre.value;
+  //  let newDescription=editDescription.value;
+  //  let  newDate= editDateTache.value;
+  //  let newTime= editTimeTache.value;
+  //  let newPriorite=editOptions.value;
+  //  let newstatus=editStatus.value;
 
 }

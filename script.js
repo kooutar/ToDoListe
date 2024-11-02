@@ -54,6 +54,12 @@ function closeEditModal(){
 // fct pour ajouter une tache 
  function ajouterTache()
   {
+    if(gestionErr(titre,description,date,time))
+    {
+      alert("il faut remplaire Tous les champs");
+      
+    }
+    else{
     var div=document.createElement("div");
     let label =document.createElement("label");
     var status = document.querySelector('input[name="taskStatus"]:checked').value;
@@ -135,10 +141,16 @@ btnSupprimmer.innerHTML = '<img src="supprimmericon.png" class="w-5 h-5 mr-2"> '
     date.value='';
     time.value='';
     priorite.value='p1';
-
+  }
 
 }
 
+function gestionErr(Titre,description,date,time)
+{
+  if(Titre.value===''||description.value===''||date.value===''||time.value==='')
+    return true;
+  return false;
+}
 
 function supprimer(button, status)
 {
@@ -181,11 +193,5 @@ function modifier()
 // pour modifier Tache
 function modifierTache()
 {
-  //  let newTitre=editTitre.value;
-  //  let newDescription=editDescription.value;
-  //  let  newDate= editDateTache.value;
-  //  let newTime= editTimeTache.value;
-  //  let newPriorite=editOptions.value;
-  //  let newstatus=editStatus.value;
-
+  
 }

@@ -97,7 +97,7 @@
                     <label class="block mt-4  text-sm font-medium text-gray-700">Statut</label>
                     <div class="flex space-x-4">
                         <label class="flex items-center">
-                            <input id="EditstatutToDo" type="radio" name="EdittaskStatus" value="To-Do" class="mr-2" checked>
+                            <input id="EditstatutToDo" type="radio" name="EdittaskStatus" value="To-Do" class="mr-2" >
                             To-Do
                         </label>
                         <label class="flex items-center">
@@ -122,8 +122,18 @@
 
 
     <section class="flex flex-col items-center mt-[20vh] px-4">
-        <p class="font-mono font-black text-3xl md:text-4xl mb-10 text-center">Planifier votre travail</p>
-        <input type="search" class="border  h-8 w-full max-w-xs  border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="rechercher">
+        <p class="font-mono font-semibold text-3xl md:text-4xl mb-10 text-center">Planifier votre travail</p>
+        <div class="element flex flex-col gap-6 md:flex-row gap-4 items-center">
+            <!-- <button id="ajouter-multiple" class="bg-yellow-600 text-white font-medium py-1 px-5 rounded hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+                Add Multiple
+            </button>
+            <input type="search" class="border h-8 w-full max-w-xs border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="rechercher"> -->
+            <button id="ajouter" onclick="ajouter2()" class="bg-yellow-600 text-white font-medium py-1 px-8 rounded hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+               Ajouter Tache
+            </button>
+        </div>
+        
+        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 w-full">
             
             <!-- Zone To Do -->
@@ -131,9 +141,9 @@
                 <div class="bg-red-600 h-2"></div>
                 <div class="flex justify-between p-4 items-center">
                     <h3 class="font-semibold">To Do <span id="contToDo">0</span></h3>
-                    <button id="ajouter" onclick="ajouter2()" class="bg-yellow-600 text-white font-medium py-1 px-2 rounded hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+                    <!-- <button id="ajouter" onclick="ajouter2()" class="bg-yellow-600 text-white font-medium py-1 px-2 rounded hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
                         Add
-                    </button>
+                    </button> -->
                 </div>
                 <div class="content flex flex-col gap-2.5 bg-white max-h-[300px] md:max-h-[500px] overflow-y-scroll p-2.5"></div>
             </div>

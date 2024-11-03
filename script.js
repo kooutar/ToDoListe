@@ -24,7 +24,7 @@ let editDescription = document.getElementById("editDescription");
 let editDateTache =document.getElementById("editDateTache");
 let editTimeTache = document.getElementById("editTimeTache");
 let editOptions = document.getElementById("editOptions");
-let editStatus = document.querySelector('input[name="EdittaskStatus"]:checked');
+let editStatus = document.querySelectorAll('input[name="EdittaskStatus"]');
 // variableTemperaire
  
 let TitreTemporaire;
@@ -34,6 +34,9 @@ let TimeTemporaire;
 let statusTemporaire;
 let prioriteTemporaire;
 
+// 
+let divParent;
+
 function ajouter2()
 {  
   document.getElementById('fenetre-medial').style.display="block"
@@ -42,7 +45,6 @@ function ajouter2()
 document.addEventListener("DOMContentLoaded", ()=> {
   var ajouterTacheButton = document.getElementById("close");
   ajouterTacheButton.addEventListener("click", ()=>{
-
     modal.style.display="none";
   });
 });
@@ -60,10 +62,17 @@ function closeEditModal(){
       
     }
     else{
+      if(gestionDate(date.value))
+      {
+        alert("date invalide");
+        date.value='';
+      }else{
     var div=document.createElement("div");
+    // div.draggable=true;
+    // div.ondragstart=darg(evnt)
     let label =document.createElement("label");
-    var status = document.querySelector('input[name="taskStatus"]:checked').value;
-    console.log(status);
+    var status = document.querySelector('input[name="taskStatus"]:checked');
+  
     let containerDesTaches=document.getElementsByClassName("content")
     // pour le style 
     div.classList.add("containerTache","p-4");
@@ -97,10 +106,15 @@ let btnModifier = document.createElement("button");
 let btnSupprimmer = document.createElement("button");
 // appeler la fct remove
 btnSupprimmer.onclick= function() {
-  alert(status)
-  supprimer(divButton, status);
+ 
+  supprimer(divButton, status.value);
 };
-btnModifier.onclick= modifier;
+// btnModifier.onclick= modifier;
+btnModifier.onclick=function()
+{
+  divParent=divButton.parentElement;
+  modifier();
+}
 // ajouter css 
 btnModifier.className = "bteModifier bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 flex items-center";
 btnSupprimmer.className = " bteSupprimer bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 flex items-center";
@@ -113,17 +127,17 @@ btnSupprimmer.innerHTML = '<img src="supprimmericon.png" class="w-5 h-5 mr-2"> '
       divButton.appendChild(btnModifier);
       divButton.appendChild(btnSupprimmer);
 
-    if (status === "To-Do") {
+    if (status.value === "To-Do") {
         containerDesTaches[0].appendChild(div);
         tablToDo.push(div);
         contToDo++;
         document.getElementById("contToDo").textContent=contToDo;
-    } else if (status === "Doing") {
+    } else if (status.value === "Doing") {
       containerDesTaches[1].appendChild(div);
       tabDoing.push(div);
       contDoing++;
         document.getElementById("contDoing").textContent=contDoing;
-    } else if (status === "Done") {
+    } else if (status.value === "Done") {
       containerDesTaches[2].appendChild(div);
       tabDone.push(div);
       contDone++;
@@ -135,15 +149,19 @@ btnSupprimmer.innerHTML = '<img src="supprimmericon.png" class="w-5 h-5 mr-2"> '
     DateTemporaire=date.value;
     TimeTemporaire=time.value;
     prioriteTemporaire=priorite.value;
+    statusTemporaire=status.value;
 
     titre.value='';
     description.value='';
     date.value='';
     time.value='';
     priorite.value='p1';
+    let statusToDo = document.querySelector('input[name="taskStatus"][value="To-Do"]');
+    statusToDo.checked = true;
   }
-
 }
+}
+
 
 function gestionErr(Titre,description,date,time)
 {
@@ -151,6 +169,16 @@ function gestionErr(Titre,description,date,time)
     return true;
   return false;
 }
+function gestionDate(date)
+{
+ let dateNow=new Date();
+  let dateNowString= dateNow.toISOString().split('T')[0];
+  let DateNowVrai=new Date(dateNow);
+  let DateUrilisteur=new Date(date);
+  if(DateUrilisteur<DateNowVrai)
+    return true;
+  return false;
+  }
 
 function supprimer(button, status)
 {
@@ -177,21 +205,35 @@ function supprimer(button, status)
 // modifier
 function modifier()
 {
-  
   editModal.classList.remove("hidden"); 
- 
   editTitre.value=TitreTemporaire;
  editDescription.value=DescrptionTemporaire;
  editDateTache.value=DateTemporaire;
  editTimeTache.value= TimeTemporaire;
- editOptions.value=priorite.value;
-
-// editStatus.value=Tachestatus.value;
+ editOptions.value=prioriteTemporaire;
+ let elt=document.querySelectorAll('input[name="taskStatus"]');
+ for(let i=0;i<elt.length;i++)
+ {
+    if(elt[i].value===statusTemporaire)
+    {
+      editStatus[i].checked=true;
+    }
+ }
 
 }
 
 // pour modifier Tache
 function modifierTache()
 {
-  
+
+  var label = divParent.querySelector('label');
+alert(label)
+// Sélection de l'élément h1 à l'intérieur du label
+var h1 = label.querySelector('h1');
+ h1.textContent=editTitre.value;
+
+    
+
+    
+         
 }

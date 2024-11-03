@@ -231,6 +231,9 @@ function modifierTache() {
   let label = divParent.querySelector('label');
   let h1 = label.querySelectorAll('p');
 
+  // Store the old status to manage the counters
+  let oldStatus = divParent.dataset.status; // Store the old status in a data attribute
+
   // Update task details
   h1[0].textContent = editTitre.value;
   h1[1].textContent = editDescription.value;
@@ -267,6 +270,31 @@ function modifierTache() {
   // Remove the task from its current parent and append it to the new container
   divParent.parentElement.removeChild(divParent);
   currentContainer.appendChild(divParent);
+
+  // Update the status in the data attribute
+  divParent.dataset.status = selectedStatus;
+
+  // Update the counters
+  if (oldStatus === "To-Do") {
+      contToDo--;
+  } else if (oldStatus === "Doing") {
+      contDoing--;
+  } else if (oldStatus === "Done") {
+      contDone--;
+  }
+
+  if (selectedStatus === "To-Do") {
+      contToDo++;
+  } else if (selectedStatus === "Doing") {
+      contDoing++;
+  } else if (selectedStatus === "Done") {
+      contDone++;
+  }
+
+  // Update the displayed counters
+  document.getElementById("contToDo").textContent = contToDo;
+  document.getElementById("contDoing").textContent = contDoing;
+  document.getElementById("contDone").textContent = contDone;
 
   // Close the edit modal
   closeEditModal();

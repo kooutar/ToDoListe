@@ -9,37 +9,37 @@
 </head>
 <body class="bg-[url('imageBckground.png')] bg-center bg-no-repeat bg-cover min-h-screen">
 
+    <!-- Logo -->
+    <div class="flex p-4 mt-4">
+      <p class="text-yellow-900 text-4xl">TaskFlow</p>
+    </div>
+
     <!-- Modal Background -->
     <div id="fenetre-medial" class="fenetre-medial fixed inset-0 hidden bg-black bg-opacity-25">
         <!-- Modal Content -->
-         
         <div class="form bg-white rounded-lg shadow-lg p-6 mx-4 sm:mx-auto" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; width: 500px;">
             <div class="headerForm flex justify-between items-center border-b pb-4 mb-4">
                 <h3 class="text-lg font-semibold">Ajouter une tâche</h3>
                 <button type="button" id="close" class="close text-gray-500 hover:text-gray-700">&times;</button>
             </div>
             <div class="contentForm">
-          
                 <label for="titre" class="block text-sm font-medium text-gray-700">Titre</label>
-                <input type="text" id="titre"  class="mt-1 h-8 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="Entrez le titre" required>
-
+                <input type="text" id="titre" class="mt-1 h-8 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="Entrez le titre" required>
                 <label for="description" class="block mt-4 text-sm font-medium text-gray-700">Description</label>
                 <textarea id="description" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="Entrez la description" required></textarea>
-
                 <div class="date flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-4">
                     <input type="date" id="dateTache" class="block h-8 w-full sm:w-1/2 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" required>
-                    <input type="time" id="timeTache" class="block  h-8 w-full sm:w-1/2 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" required>
+                    <input type="time" id="timeTache" class="block h-8 w-full sm:w-1/2 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" required>
                 </div>
-  
                 <div class="mb-4">
-                    <label class="block mt-4  text-sm font-medium text-gray-700">Statut</label>
+                    <label class="block mt-4 text-sm font-medium text-gray-700">Statut</label>
                     <div class="flex space-x-4">
                         <label class="flex items-center">
                             <input id="statutToDo" type="radio" name="taskStatus" value="To-Do" class="mr-2" checked>
                             To-Do
                         </label>
                         <label class="flex items-center">
-                            <input  id="statutDoing" type="radio" name="taskStatus" value="Doing" class="mr-2">
+                            <input id="statutDoing" type="radio" name="taskStatus" value="Doing" class="mr-2">
                             Doing
                         </label>
                         <label class="flex items-center">
@@ -48,7 +48,6 @@
                         </label>
                     </div>
                 </div>
-
                 <label for="options" class="block mt-4 text-sm font-medium text-gray-700">Options</label>
                 <select id="options" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300">
                     <option value="p1">p1</option>
@@ -58,50 +57,42 @@
                 <button type="button" id="ajouterTache" onclick="ajouterTache()" class="mt-6 w-full bg-yellow-600 text-white font-semibold py-2 rounded-md hover:bg-yellow-900 focus:outline-none focus:ring focus:ring-blue-300">
                     Ajouter Tâche
                 </button>
-          
             </div>
         </div>
-        
     </div>
 
     <!-- Modal Background -->
     <div id="edit-modal" class="fenetre-medial fixed inset-0 hidden bg-black bg-opacity-25">
         <!-- Modal Content -->
-         
         <div class="form bg-white rounded-lg shadow-lg p-6 mx-4 sm:mx-auto" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; width: 500px;">
             <div class="headerForm flex justify-between items-center border-b pb-4 mb-4">
                 <h3 class="text-lg font-semibold">Modifier une tâche</h3>
                 <button type="button" id="close" class="close text-gray-500 hover:text-gray-700" onclick="closeEditModal();">&times;</button>
             </div>
-           
             <div class="contentForm">
                 <label for="editTitre" class="block text-sm font-medium text-gray-700">Titre</label>
-                <input type="text" id="editTitre"  class="mt-1 h-8 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="Entrez le titre" required>
-
+                <input type="text" id="editTitre" class="mt-1 h-8 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="Entrez le titre" required>
                 <label for="editDescription" class="block mt-4 text-sm font-medium text-gray-700">Description</label>
                 <textarea id="editDescription" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="Entrez la description" required></textarea>
-
                 <div class="date flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 mt-4">
                     <input type="date" id="editDateTache" class="block h-8 w-full sm:w-1/2 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" required>
-                    <input type="time" id="editTimeTache" class="block  h-8 w-full sm:w-1/2 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" required>
+                    <input type="time" id="editTimeTache" class="block h-8 w-full sm:w-1/2 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" required>
                 </div>
-
                 <label for="editOptions" class="block mt-4 text-sm font-medium text-gray-700">Options</label>
                 <select id="editOptions" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300">
                     <option value="p1">p1</option>
                     <option value="p2">p2</option>
                     <option value="p3">p3</option>
                 </select>
-
                 <div class="mb-4">
-                    <label class="block mt-4  text-sm font-medium text-gray-700">Statut</label>
+                    <label class="block mt-4 text-sm font-medium text-gray-700">Statut</label>
                     <div class="flex space-x-4">
                         <label class="flex items-center">
-                            <input id="EditstatutToDo" type="radio" name="EdittaskStatus" value="To-Do" class="mr-2" >
+                            <input id="EditstatutToDo" type="radio" name="EdittaskStatus" value="To-Do" class="mr-2">
                             To-Do
                         </label>
                         <label class="flex items-center">
-                            <input  id="EditstatutDoing" type="radio" name="EdittaskStatus" value="Doing" class="mr-2">
+                            <input id="EditstatutDoing" type="radio" name="EdittaskStatus" value="Doing" class="mr-2">
                             Doing
                         </label>
                         <label class="flex items-center">
@@ -110,40 +101,27 @@
                         </label>
                     </div>
                 </div>
-
                 <button type="button" id="modifierTache" onclick="modifierTache()" class="mt-6 w-full bg-yellow-600 text-white font-semibold py-2 rounded-md hover:bg-yellow-900 focus:outline-none focus:ring focus:ring-blue-300">
                     Modifier Tâche
                 </button>
             </div>
-        
         </div>
-        
     </div>
 
-
-    <section class="flex flex-col items-center mt-[20vh] px-4">
+    <section class=" flex flex-col items-center mt-[20vh] px-4 h-[100vh]">
         <p class="font-mono font-semibold text-3xl md:text-4xl mb-10 text-center">Planifier votre travail</p>
         <div class="element flex flex-col gap-6 md:flex-row gap-4 items-center">
-            <!-- <button id="ajouter-multiple" class="bg-yellow-600 text-white font-medium py-1 px-5 rounded hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-                Add Multiple
-            </button>
-            <input type="search" class="border h-8 w-full max-w-xs border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300" placeholder="rechercher"> -->
             <button id="ajouter" onclick="ajouter2()" class="bg-yellow-600 text-white font-medium py-1 px-8 rounded hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-               Ajouter Tache
+               Ajouter Tâche
             </button>
         </div>
         
-        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 w-full">
-            
             <!-- Zone To Do -->
             <div class="w-full bg-white border-2 border-black rounded-lg overflow-hidden">
                 <div class="bg-red-600 h-2"></div>
                 <div class="flex justify-between p-4 items-center">
                     <h3 class="font-semibold">To Do <span id="contToDo">0</span></h3>
-                    <!-- <button id="ajouter" onclick="ajouter2()" class="bg-yellow-600 text-white font-medium py-1 px-2 rounded hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-                        Add
-                    </button> -->
                 </div>
                 <div class="content flex flex-col gap-2.5 bg-white max-h-[300px] md:max-h-[500px] overflow-y-scroll p-2.5"></div>
             </div>
@@ -161,14 +139,23 @@
             <div class="w-full bg-white border-2 border-black rounded-lg overflow-hidden">
                 <div class="bg-green-600 h-2"></div>
                 <div class="p-4">
-                    <h3 class="font-semibold">Done  <span id="contDone">0</span></h3>
+                    <h3 class="font-semibold">Done <span id="contDone">0</span></h3>
                 </div>
                 <div class="content flex flex-col gap-2.5 bg-white max-h-[300px] md:max-h-[500px] overflow-y-scroll p-2.5"></div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="bg-white text-center p-4 mt-6">
+        <p class="text-gray-700">© 2024 TaskFlow. Tous droits réservés.</p>
+        <p class="text-gray-500">Suivez-nous sur 
+            <a href="#" class="text-blue-500">Facebook</a>, 
+            <a href="#" class="text-blue-500">Twitter</a>, 
+            <a href="#" class="text-blue-500">Instagram</a>
+        </p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
-
 </html>

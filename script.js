@@ -77,9 +77,10 @@ function closeEditModal(){
     // pour le style 
     div.classList.add("containerTache","p-4");
     
-    label.innerHTML= `<h1>${titre.value}</h1>
-                       <p >${description.value}<p><br>
-                       <p>${date.value}/${time.value}</p>
+    label.innerHTML= `<p>${titre.value}</p>
+                       <p>${description.value}</p>
+                       <p>${date.value}</p>
+                       <p>${time.value}</p>
                        `;
     if(priorite.value==="p1")
     {
@@ -206,11 +207,13 @@ function supprimer(button, status)
 function modifier()
 {
   editModal.classList.remove("hidden"); 
-  editTitre.value=TitreTemporaire;
- editDescription.value=DescrptionTemporaire;
- editDateTache.value=DateTemporaire;
- editTimeTache.value= TimeTemporaire;
- editOptions.value=prioriteTemporaire;
+
+  let label = divParent.querySelector('label');
+  let h1 = label.querySelectorAll('p');
+ editTitre.value=h1[0].textContent;
+ editDescription.value=h1[1].textContent;
+editDateTache.value=h1[2].textContent;
+editTimeTache.value=h1[3].textContent;
  let elt=document.querySelectorAll('input[name="taskStatus"]');
  for(let i=0;i<elt.length;i++)
  {
@@ -223,17 +226,48 @@ function modifier()
 }
 
 // pour modifier Tache
-function modifierTache()
-{
+function modifierTache() {
+  // Get the current values from the edit fields
+  let label = divParent.querySelector('label');
+  let h1 = label.querySelectorAll('p');
 
-  var label = divParent.querySelector('label');
-alert(label)
-// Sélection de l'élément h1 à l'intérieur du label
-var h1 = label.querySelector('h1');
- h1.textContent=editTitre.value;
+  // Update task details
+  h1[0].textContent = editTitre.value;
+  h1[1].textContent = editDescription.value;
+  h1[2].textContent = editDateTache.value;
+  h1[3].textContent = editTimeTache.value;
 
-    
+  // Determine the selected status and priority
+  let selectedStatus = Array.from(editStatus).find(input => input.checked).value;
+  let selectedPriority = editOptions.value;
 
-    
-         
+  // Update the priority class based on the selected option
+  divParent.classList.remove("bg-red-300", "border-l-4", "border-red-500",
+                              "bg-yellow-300", "border-l-4", "border-yellow-300",
+                              "bg-green-100", "border-l-4", "border-green-500");
+
+  if (selectedPriority === "p1") {
+      divParent.classList.add("bg-red-300", "border-l-4", "border-red-500");
+  } else if (selectedPriority === "p2") {
+      divParent.classList.add("bg-yellow-300", "border-l-4", "border-yellow-300");
+  } else if (selectedPriority === "p3") {
+      divParent.classList.add("bg-green-100", "border-l-4", "border-green-500");
+  }
+
+  // Move the task to the appropriate container based on the new status
+  let currentContainer = null;
+  if (selectedStatus === "To-Do") {
+      currentContainer = containerDesTaches[0];
+  } else if (selectedStatus === "Doing") {
+      currentContainer = containerDesTaches[1];
+  } else if (selectedStatus === "Done") {
+      currentContainer = containerDesTaches[2];
+  }
+
+  // Remove the task from its current parent and append it to the new container
+  divParent.parentElement.removeChild(divParent);
+  currentContainer.appendChild(divParent);
+
+  // Close the edit modal
+  closeEditModal();
 }
